@@ -1,0 +1,120 @@
+.slider_page {
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel .img1 {
+  width: 100%;
+  // height: 200px; /* Set the height for consistency */
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+}
+
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.thumbnail {
+  margin: 0 5px; /* Space between thumbnails */
+  cursor: pointer;
+  flex: 0 0 auto; /* Prevent thumbnails from growing */
+  width: 80px; /* Set a fixed width for thumbnails */
+  height: 80px; /* Set a fixed height for thumbnails */
+  overflow: hidden;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.thumbnail img:hover {
+  border-color: #007bff; /* Highlight border on hover */
+}
+
+.thumbnail img.active {
+  border-color: #007bff; /* Highlight border for active image */
+}
+
+.title_page {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.custom-slider {
+  position: relative;
+}
+
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 0;
+  z-index: 10;
+}
+
+.thumbnail {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+  width: 5%;
+}
+
+.carousel-item {
+  position: relative;
+  transition: transform 0.5s ease; // Adjust transition speed
+}
+
+.carousel-item .img1 {
+  width: 100%;
+  height: 500px;
+  border-radius: 15px;
+}
+
+.thumbnail .img2 {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .thumbnail-container {
+    display: none;
+  }
+
+  .carousel-item .img1 {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.title_page {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.title_page h2,
+h3 {
+  font-weight: 700;
+}
+* {
+  font-family: Archivo, sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

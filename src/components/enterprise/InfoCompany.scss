@@ -1,0 +1,31 @@
+.cover-photo-container {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cover-photo {
+    // object-fit: cover;
+    width: 100%;
+    height: 400px;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+    bottom: -40px;
+    left: 20px;
+  }
+  
+  .profile-photo {
+    width: 150px;
+    height: 50px;
+    border: none;
+  }
+  
+  .profile-text {
+    margin-left: 10px;
+    text-align: left;
+  }
+  .mainpage{
+    background-image: url(https://mixivivu.com/section-background.png);
+  }

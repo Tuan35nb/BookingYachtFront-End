@@ -1,0 +1,88 @@
+import React, { useEffect, useState } from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
+import ModalUpdateProfile from './Modal/ModalUpdateProfile';
+import { useSelector } from 'react-redux';
+import { getProfileCompany } from '../../services/ApiServices';
+const ProfileCompany = () => {
+
+    const idCompany = useSelector(state => state.account.account.idCompany);
+
+    const [isShowModal, setIsShowModal] = useState(false);
+    const [profile, setProfile] = useState({});
+
+    const handleClose = () => {
+        setIsShowModal(false);
+    }
+
+    useEffect(() => {
+        getProfile();
+    }, [])
+
+    const getProfile = async () => {
+        let res = await getProfileCompany(idCompany);
+        if (res && res.data && res.data.data) {
+            setProfile(res.data.data);
+        }
+    }
+
+    return (
+
+        <div>
+            <section >
+                <div className="container py-5 h-100">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
+                        <div className="col col-lg-6 mb-4 mb-lg-0">
+                            <div className="card mb-3" style={{ borderRadius: '.5rem' }}>
+                                <div className="row g-0">
+                                    <div className="col-md-4 gradient-custom text-center" style={{ borderTopLeftRadius: '.3rem', borderBottomLeftRadius: '.3rem' }}>
+                                        <img src={`http://localhost:8080/api/customer/file/${profile.logo}`} alt='logo' className="img-fluid my-5" style={{ width: 80 }} />
+
+                                    </div>
+                                    <div className="col-md-8">
+                                        <div className="card-body p-4">
+                                            <h6>Information</h6>
+                                            <hr className="mt-0 mb-4" />
+                                            <div className="row pt-1">
+                                                <div className="col-6 mb-3">
+                                                    <h6>Email</h6>
+                                                    <p className="text-muted">{profile.email}</p>
+                                                </div>
+                                                <div className="col-6 mb-3">
+                                                    <h6>Address</h6>
+                                                    <p className="text-muted">{profile.address}</p>
+                                                </div>
+
+                                            </div>
+                                            <h6>Name</h6>
+                                            <hr className="mt-0 mb-4" />
+                                            <div className="row pt-1">
+                                                <div className="col-9 mb-2">
+                                                    {profile.name}
+                                                </div>
+                                                <div className="col-3 mb-3">
+
+                                                </div>
+                                            </div>
+                                            <ButtonGroup>
+                                                <Button onClick={() => setIsShowModal(true)} className='btn btn-primary'>Edit</Button>
+                                            </ButtonGroup>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <ModalUpdateProfile
+                show={isShowModal}
+                handleClose={handleClose}
+                profile={profile}
+                getProfile={getProfile}
+            />
+
+        </div>
+    );
+};
+
+export default ProfileCompany;
